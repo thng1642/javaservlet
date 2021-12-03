@@ -13,8 +13,9 @@
             <div class="nav-buttons">
                 <button id="loginBtn" class='active'>Login </button>
                 <button id="registerBtn">Register</button>
+                <button id="btn-fw">Forward</button>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="position:relative;">
                 <form action="loginServlet" id="loginform" method="post">
                     <label for="username">username</label>
                     <input type="text" id="username">
@@ -31,7 +32,27 @@
                     <input type="text" id="password">
                     <label for="confirmpassword">confirm password</label>
                     <input type="text" id="confirmpassword">
-                    <input type="submit" value="Submit" class="submit">
+                    
+                </form>
+                
+                 <form action="" id="forward-register">
+                    <label for="mssv">mssv</label>
+                    <input type="text" id="mssv">
+                    
+                    <label for="cccd">cmnd/cccd</label>
+                    <input type="text" id="cccd">
+
+                    <label for="major">major</label>
+                    <input type="text" id="major">
+
+                    <label for="phone">phone</label>
+                    <input type="text" id="phone">
+
+                    <input type="hidden" id="fw-full-name" name="full-name" value="null">
+                    <input type="hidden" id="fw-email" name="email" value="nul">
+                    <input type="hidden" id="fw-password" name="password" value="null">
+
+                    <input type="submit" value="Submit" class="submit" id="btn-fw">
                 </form>
             </div>
             <div id="forgot">
@@ -39,12 +60,16 @@
             </div>
         </div>
     </div>
-    <script>
+     <script>
         var loginBtn = document.getElementById("loginBtn");
         var registerBtn = document.getElementById("registerBtn");
+
         var loginform = document.getElementById("loginform");
         var registerform = document.getElementById("registerform");
         var forgot = document.getElementById("forgot");
+
+        var btnForward = document.getElementById("btn-fw");
+        var forward = document.getElementById("forward-register");
 
         registerBtn.onclick= function() {
             registerform.style.left='0px';
@@ -53,9 +78,11 @@
             loginform.style.opacity='0';
             forgot.style.left='-500px';
             forgot.style.opacity='0';
+            forward.style.top='450px';
             registerBtn.classList.add('active');
             loginBtn.classList.remove('active');
-
+            btnForward.classList.remove('active');
+            btnForward.style.opacity='1';
         }
 
         loginBtn.onclick= function() {
@@ -66,10 +93,31 @@
             registerform.style='500px';
             loginBtn.classList.add('active');
             registerBtn.classList.remove('active');
+            btnForward.classList.remove('active');
             registerform.style.opacity='0';
+
+            forward.style.top = '450px';
+            btnForward.style.opacity='0';
         }
 
+        btnForward.onclick=function() {
+            forward.style.top='0px';
+            // forward.style.opacity='1';
+            btnForward.classList.add('active');
+            loginBtn.classList.remove('active');
+            registerBtn.classList.remove('active');
+            registerform.style.left='500px';
+            registerform.style.opacity='0';
 
+            //
+            let name = document.getElementById('fw-full-name');
+            let email = document.getElementById('fw-email');
+            let pwd = document.getElementById('fw-password');
+
+            name.value = document.getElementById('fullname').value;
+            email.value = document.getElementById('email').value;
+            pwd.value = document.getElementById('password').value;
+        }
         
     </script>
 </body>
