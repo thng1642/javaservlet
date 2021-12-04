@@ -101,7 +101,7 @@ form, #forgot {
     transition: all .5s ease;
 }
 #btn-fw {
-    opacity: 1;
+    opacity: 0;
 }
 #loginBtn, #registerBtn, #btn-fw {
     transition: all .5s ease;
